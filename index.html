@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Invisible Chessboard: Rapido/Uber Price Dynamics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Roboto+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>The Invisible Chessboard: Rapido/Uber Price Dynamics</h1>
+            <p class="subtitle">Discover how ride-hailing apps use location-based surge pricing</p>
+            <div class="brand">learnapart</div>
+        </header>
+        
+        <main class="main-content">
+            <div class="grid-panel">
+                <h2>HITECH City Grid</h2>
+                <div class="grid-container">
+                    <canvas id="hexGrid" width="600" height="500"></canvas>
+                </div>
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color low-demand"></div>
+                        <span>Low Demand</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color medium-demand"></div>
+                        <span>Medium Demand</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color high-demand"></div>
+                        <span>High Demand</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-icon rider"></div>
+                        <span>Riders</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-icon driver"></div>
+                        <span>Drivers</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="control-panel">
+                <h2>User Console</h2>
+                
+                <div class="control-section">
+                    <h3>Your Location</h3>
+                    <div class="location-info">
+                        <div class="info-row">
+                            <span class="label">Hexagon:</span>
+                            <span id="currentHex">hex_0_0</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Demand:</span>
+                            <span id="currentDemand">High</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Surge:</span>
+                            <span id="currentSurge">1.9x</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="control-section">
+                    <h3>Your Price</h3>
+                    <div class="price-display">
+                        <span class="currency">₹</span><span id="currentPrice">367</span>
+                    </div>
+                    <div class="price-breakdown">
+                        <div class="breakdown-item">
+                            <span>Base fare + Distance + Time:</span>
+                            <span>₹<span id="baseCost">215</span></span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Surge multiplier:</span>
+                            <span><span id="surgeMultiplier">1.9</span>x</span>
+                        </div>
+                        <div class="breakdown-item battery-penalty" id="batteryPenalty" style="display: none;">
+                            <span>Low battery penalty:</span>
+                            <span>+₹<span id="batteryAmount">0</span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="control-section">
+                    <h3>Actions</h3>
+                    <button id="demandSpike" class="btn btn--primary">
+                        🔥 Simulate Demand Spike
+                    </button>
+                    <button id="walkButton" class="btn btn--outline">
+                        🚶 Walk 200m
+                    </button>
+                    <div class="toggle-container">
+                        <label class="toggle-label">
+                            <input type="checkbox" id="lowBattery" class="toggle-input">
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-text">🔋 Simulate Low Battery (Experimental)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="control-section">
+                    <h3>Instructions</h3>
+                    <ul class="instructions">
+                        <li>Drag the red marker on the grid to move your location</li>
+                        <li>Watch how prices change based on demand in different areas</li>
+                        <li>Click "Simulate Demand Spike" to see surge pricing in action</li>
+                        <li>Use "Walk 200m" to move to adjacent hexagons</li>
+                        <li>Toggle "Low Battery" to see personalized pricing</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

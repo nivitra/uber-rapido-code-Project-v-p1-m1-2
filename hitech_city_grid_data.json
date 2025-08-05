@@ -1,0 +1,863 @@
+{
+  "hitech_center": {
+    "lat": 17.4455,
+    "lng": 78.3826
+  },
+  "hexagonal_grid": [
+    {
+      "id": "hex_-4_-4",
+      "center": {
+        "lat": 17.430055984555985,
+        "lng": 78.36390695467044
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 4,
+      "drivers": 3
+    },
+    {
+      "id": "hex_-4_-3",
+      "center": {
+        "lat": 17.430055984555985,
+        "lng": 78.36858021600283
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 0,
+      "drivers": 1
+    },
+    {
+      "id": "hex_-4_-2",
+      "center": {
+        "lat": 17.430055984555985,
+        "lng": 78.37325347733521
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 3,
+      "drivers": 2
+    },
+    {
+      "id": "hex_-4_-1",
+      "center": {
+        "lat": 17.430055984555985,
+        "lng": 78.37792673866761
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 0,
+      "drivers": 4
+    },
+    {
+      "id": "hex_-4_0",
+      "center": {
+        "lat": 17.430055984555985,
+        "lng": 78.3826
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 0,
+      "drivers": 3
+    },
+    {
+      "id": "hex_-4_1",
+      "center": {
+        "lat": 17.430055984555985,
+        "lng": 78.38727326133238
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.1,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 6,
+      "drivers": 2
+    },
+    {
+      "id": "hex_-4_2",
+      "center": {
+        "lat": 17.430055984555985,
+        "lng": 78.39194652266478
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 6,
+      "drivers": 3
+    },
+    {
+      "id": "hex_-4_3",
+      "center": {
+        "lat": 17.430055984555985,
+        "lng": 78.39661978399717
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 4,
+      "drivers": 2
+    },
+    {
+      "id": "hex_-3_-4",
+      "center": {
+        "lat": 17.43391698841699,
+        "lng": 78.36624358533663
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 2,
+      "drivers": 4
+    },
+    {
+      "id": "hex_-3_-3",
+      "center": {
+        "lat": 17.43391698841699,
+        "lng": 78.37091684666902
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 4,
+      "drivers": 4
+    },
+    {
+      "id": "hex_-3_-2",
+      "center": {
+        "lat": 17.43391698841699,
+        "lng": 78.37559010800142
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 5,
+      "drivers": 3
+    },
+    {
+      "id": "hex_-3_-1",
+      "center": {
+        "lat": 17.43391698841699,
+        "lng": 78.3802633693338
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 1,
+      "drivers": 3
+    },
+    {
+      "id": "hex_-3_0",
+      "center": {
+        "lat": 17.43391698841699,
+        "lng": 78.38493663066619
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.3,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 5,
+      "drivers": 1
+    },
+    {
+      "id": "hex_-3_1",
+      "center": {
+        "lat": 17.43391698841699,
+        "lng": 78.38960989199857
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 5,
+      "drivers": 2
+    },
+    {
+      "id": "hex_-3_2",
+      "center": {
+        "lat": 17.43391698841699,
+        "lng": 78.39428315333097
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 7,
+      "drivers": 1
+    },
+    {
+      "id": "hex_-3_3",
+      "center": {
+        "lat": 17.43391698841699,
+        "lng": 78.39895641466336
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 1,
+      "drivers": 4
+    },
+    {
+      "id": "hex_-2_-4",
+      "center": {
+        "lat": 17.43777799227799,
+        "lng": 78.36390695467044
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 6,
+      "drivers": 2
+    },
+    {
+      "id": "hex_-2_-3",
+      "center": {
+        "lat": 17.43777799227799,
+        "lng": 78.36858021600283
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 0,
+      "drivers": 2
+    },
+    {
+      "id": "hex_-2_-2",
+      "center": {
+        "lat": 17.43777799227799,
+        "lng": 78.37325347733521
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.4,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 5,
+      "drivers": 2
+    },
+    {
+      "id": "hex_-2_-1",
+      "center": {
+        "lat": 17.43777799227799,
+        "lng": 78.37792673866761
+      },
+      "demand_level": "High",
+      "surge_multiplier": 2.1,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 2,
+      "drivers": 3
+    },
+    {
+      "id": "hex_-2_0",
+      "center": {
+        "lat": 17.43777799227799,
+        "lng": 78.3826
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 7,
+      "drivers": 4
+    },
+    {
+      "id": "hex_-2_1",
+      "center": {
+        "lat": 17.43777799227799,
+        "lng": 78.38727326133238
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 4,
+      "drivers": 3
+    },
+    {
+      "id": "hex_-2_2",
+      "center": {
+        "lat": 17.43777799227799,
+        "lng": 78.39194652266478
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 0,
+      "drivers": 1
+    },
+    {
+      "id": "hex_-2_3",
+      "center": {
+        "lat": 17.43777799227799,
+        "lng": 78.39661978399717
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 3,
+      "drivers": 2
+    },
+    {
+      "id": "hex_-1_-4",
+      "center": {
+        "lat": 17.441638996138995,
+        "lng": 78.36624358533663
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 3,
+      "drivers": 1
+    },
+    {
+      "id": "hex_-1_-3",
+      "center": {
+        "lat": 17.441638996138995,
+        "lng": 78.37091684666902
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 6,
+      "drivers": 1
+    },
+    {
+      "id": "hex_-1_-2",
+      "center": {
+        "lat": 17.441638996138995,
+        "lng": 78.37559010800142
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.3,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 0,
+      "drivers": 4
+    },
+    {
+      "id": "hex_-1_-1",
+      "center": {
+        "lat": 17.441638996138995,
+        "lng": 78.3802633693338
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.1,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 0,
+      "drivers": 3
+    },
+    {
+      "id": "hex_-1_0",
+      "center": {
+        "lat": 17.441638996138995,
+        "lng": 78.38493663066619
+      },
+      "demand_level": "High",
+      "surge_multiplier": 1.7,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 5,
+      "drivers": 2
+    },
+    {
+      "id": "hex_-1_1",
+      "center": {
+        "lat": 17.441638996138995,
+        "lng": 78.38960989199857
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.3,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 1,
+      "drivers": 4
+    },
+    {
+      "id": "hex_-1_2",
+      "center": {
+        "lat": 17.441638996138995,
+        "lng": 78.39428315333097
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 0,
+      "drivers": 1
+    },
+    {
+      "id": "hex_-1_3",
+      "center": {
+        "lat": 17.441638996138995,
+        "lng": 78.39895641466336
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 7,
+      "drivers": 1
+    },
+    {
+      "id": "hex_0_-4",
+      "center": {
+        "lat": 17.4455,
+        "lng": 78.36390695467044
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 7,
+      "drivers": 4
+    },
+    {
+      "id": "hex_0_-3",
+      "center": {
+        "lat": 17.4455,
+        "lng": 78.36858021600283
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 7,
+      "drivers": 2
+    },
+    {
+      "id": "hex_0_-2",
+      "center": {
+        "lat": 17.4455,
+        "lng": 78.37325347733521
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.2,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 2,
+      "drivers": 2
+    },
+    {
+      "id": "hex_0_-1",
+      "center": {
+        "lat": 17.4455,
+        "lng": 78.37792673866761
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 5,
+      "drivers": 4
+    },
+    {
+      "id": "hex_0_0",
+      "center": {
+        "lat": 17.4455,
+        "lng": 78.3826
+      },
+      "demand_level": "High",
+      "surge_multiplier": 1.9,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 5,
+      "drivers": 1
+    },
+    {
+      "id": "hex_0_1",
+      "center": {
+        "lat": 17.4455,
+        "lng": 78.38727326133238
+      },
+      "demand_level": "High",
+      "surge_multiplier": 1.9,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 4,
+      "drivers": 3
+    },
+    {
+      "id": "hex_0_2",
+      "center": {
+        "lat": 17.4455,
+        "lng": 78.39194652266478
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.2,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 2,
+      "drivers": 4
+    },
+    {
+      "id": "hex_0_3",
+      "center": {
+        "lat": 17.4455,
+        "lng": 78.39661978399717
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 1,
+      "drivers": 2
+    },
+    {
+      "id": "hex_1_-4",
+      "center": {
+        "lat": 17.449361003861004,
+        "lng": 78.36624358533663
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 3,
+      "drivers": 3
+    },
+    {
+      "id": "hex_1_-3",
+      "center": {
+        "lat": 17.449361003861004,
+        "lng": 78.37091684666902
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 3,
+      "drivers": 1
+    },
+    {
+      "id": "hex_1_-2",
+      "center": {
+        "lat": 17.449361003861004,
+        "lng": 78.37559010800142
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.2,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 1,
+      "drivers": 2
+    },
+    {
+      "id": "hex_1_-1",
+      "center": {
+        "lat": 17.449361003861004,
+        "lng": 78.3802633693338
+      },
+      "demand_level": "High",
+      "surge_multiplier": 2.2,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 1,
+      "drivers": 3
+    },
+    {
+      "id": "hex_1_0",
+      "center": {
+        "lat": 17.449361003861004,
+        "lng": 78.38493663066619
+      },
+      "demand_level": "High",
+      "surge_multiplier": 1.8,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 3,
+      "drivers": 3
+    },
+    {
+      "id": "hex_1_1",
+      "center": {
+        "lat": 17.449361003861004,
+        "lng": 78.38960989199857
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.4,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 2,
+      "drivers": 2
+    },
+    {
+      "id": "hex_1_2",
+      "center": {
+        "lat": 17.449361003861004,
+        "lng": 78.39428315333097
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 0,
+      "drivers": 4
+    },
+    {
+      "id": "hex_1_3",
+      "center": {
+        "lat": 17.449361003861004,
+        "lng": 78.39895641466336
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 7,
+      "drivers": 3
+    },
+    {
+      "id": "hex_2_-4",
+      "center": {
+        "lat": 17.453222007722008,
+        "lng": 78.36390695467044
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 3,
+      "drivers": 2
+    },
+    {
+      "id": "hex_2_-3",
+      "center": {
+        "lat": 17.453222007722008,
+        "lng": 78.36858021600283
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 3,
+      "drivers": 4
+    },
+    {
+      "id": "hex_2_-2",
+      "center": {
+        "lat": 17.453222007722008,
+        "lng": 78.37325347733521
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 6,
+      "drivers": 4
+    },
+    {
+      "id": "hex_2_-1",
+      "center": {
+        "lat": 17.453222007722008,
+        "lng": 78.37792673866761
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.3,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 6,
+      "drivers": 4
+    },
+    {
+      "id": "hex_2_0",
+      "center": {
+        "lat": 17.453222007722008,
+        "lng": 78.3826
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.4,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 5,
+      "drivers": 2
+    },
+    {
+      "id": "hex_2_1",
+      "center": {
+        "lat": 17.453222007722008,
+        "lng": 78.38727326133238
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 0,
+      "drivers": 2
+    },
+    {
+      "id": "hex_2_2",
+      "center": {
+        "lat": 17.453222007722008,
+        "lng": 78.39194652266478
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 4,
+      "drivers": 2
+    },
+    {
+      "id": "hex_2_3",
+      "center": {
+        "lat": 17.453222007722008,
+        "lng": 78.39661978399717
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 7,
+      "drivers": 4
+    },
+    {
+      "id": "hex_3_-4",
+      "center": {
+        "lat": 17.45708301158301,
+        "lng": 78.36624358533663
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 6,
+      "drivers": 4
+    },
+    {
+      "id": "hex_3_-3",
+      "center": {
+        "lat": 17.45708301158301,
+        "lng": 78.37091684666902
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 6,
+      "drivers": 3
+    },
+    {
+      "id": "hex_3_-2",
+      "center": {
+        "lat": 17.45708301158301,
+        "lng": 78.37559010800142
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.1,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 5,
+      "drivers": 2
+    },
+    {
+      "id": "hex_3_-1",
+      "center": {
+        "lat": 17.45708301158301,
+        "lng": 78.3802633693338
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 4,
+      "drivers": 4
+    },
+    {
+      "id": "hex_3_0",
+      "center": {
+        "lat": 17.45708301158301,
+        "lng": 78.38493663066619
+      },
+      "demand_level": "Medium",
+      "surge_multiplier": 1.2,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 4,
+      "drivers": 3
+    },
+    {
+      "id": "hex_3_1",
+      "center": {
+        "lat": 17.45708301158301,
+        "lng": 78.38960989199857
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 3,
+      "drivers": 3
+    },
+    {
+      "id": "hex_3_2",
+      "center": {
+        "lat": 17.45708301158301,
+        "lng": 78.39428315333097
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 1,
+      "drivers": 4
+    },
+    {
+      "id": "hex_3_3",
+      "center": {
+        "lat": 17.45708301158301,
+        "lng": 78.39895641466336
+      },
+      "demand_level": "Low",
+      "surge_multiplier": 1.0,
+      "radius_lng": 0.0026981086882485713,
+      "radius_lat": 0.002574002574002574,
+      "riders": 1,
+      "drivers": 4
+    }
+  ],
+  "pricing_data": {
+    "base_fare": 150,
+    "distance_rate": 12,
+    "time_rate": 2,
+    "booking_fee": 25,
+    "destination": {
+      "lat": 17.42,
+      "lng": 78.4
+    }
+  },
+  "config": {
+    "grid_size": 7,
+    "radius_km": 2,
+    "color_scheme": {
+      "background": "#000000",
+      "text": "#FFFFFF",
+      "electric_blue": "#00BFFF",
+      "surge_orange": "#FF8C00",
+      "low_demand": "#00BFFF",
+      "medium_demand": "#FFFF00",
+      "high_demand": "#FF8C00"
+    }
+  }
+}
