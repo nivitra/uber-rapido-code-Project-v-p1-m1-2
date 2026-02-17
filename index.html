@@ -1,125 +1,1217 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Invisible Chessboard: Rapido/Uber Price Dynamics</title>
+    <title>The Invisible Chessboard — Uber/Rapido Price Dynamics</title>
+    <meta name="description"
+        content="Step-by-step guided simulation of Uber/Rapido pricing dynamics for classroom presentation.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Roboto+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="app-container">
-        <header class="app-header">
-            <h1>The Invisible Chessboard: Rapido/Uber Price Dynamics</h1>
-            <p class="subtitle">Discover how ride-hailing apps use location-based surge pricing</p>
-            <div class="brand">learnapart</div>
-        </header>
-        
-        <main class="main-content">
-            <div class="grid-panel">
-                <h2>HITECH City Grid</h2>
-                <div class="grid-container">
-                    <canvas id="hexGrid" width="600" height="500"></canvas>
+
+    <!-- ═══════ STEP 0: LANDING / START SCREEN ═══════ -->
+    <section class="step active" id="step0">
+        <div class="landing">
+            <div class="landing-grid-bg"></div>
+            <div class="landing-content">
+                <svg class="brand-mark" viewBox="0 0 40 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="20,0 40,36 0,36" fill="#0A84FF" />
+                </svg>
+                <div class="landing-badge">Project-V · Module 1</div>
+                <h1 class="landing-title">Supply & Demand<br>Solutions Marketplace</h1>
+                <p class="landing-sub">How Uber &amp; Rapido use algorithms, surge pricing, and ML to control every ride
+                    you take.</p>
+                <div class="landing-topics">
+                    <div class="topic-card">
+                        <span class="topic-num">01</span>
+                        <span class="topic-label">Live Marketplace Map</span>
+                        <span class="topic-desc">H3 Hexagonal Grid &amp; Demand Heatmaps</span>
+                    </div>
+                    <div class="topic-card">
+                        <span class="topic-num">02</span>
+                        <span class="topic-label">Algorithm Inspector</span>
+                        <span class="topic-desc">Real-Time Matching &amp; Probability Scoring</span>
+                    </div>
+                    <div class="topic-card">
+                        <span class="topic-num">03</span>
+                        <span class="topic-label">Economics Dashboard</span>
+                        <span class="topic-desc">Surge Pricing, Quests &amp; Price Breakdown</span>
+                    </div>
+                    <div class="topic-card">
+                        <span class="topic-num">04</span>
+                        <span class="topic-label">ETA ML Predictor</span>
+                        <span class="topic-desc">Feature Weights &amp; Confidence Intervals</span>
+                    </div>
                 </div>
-                <div class="legend">
-                    <div class="legend-item">
-                        <div class="legend-color low-demand"></div>
-                        <span>Low Demand</span>
+                <div class="topic-grid">
+                    <div class="topic-card">
+                        <span class="topic-num">05</span>
+                        <span class="topic-label">Rain Surge Crisis</span>
+                        <span class="topic-desc">Bangalore pricing dilemma during emergencies</span>
                     </div>
-                    <div class="legend-item">
-                        <div class="legend-color medium-demand"></div>
-                        <span>Medium Demand</span>
+                    <div class="topic-card">
+                        <span class="topic-num">06</span>
+                        <span class="topic-label">Tier-2 Launch Failure</span>
+                        <span class="topic-desc">Cold-start problem &amp; corridor pivot strategy</span>
                     </div>
-                    <div class="legend-item">
-                        <div class="legend-color high-demand"></div>
-                        <span>High Demand</span>
+                    <div class="topic-card">
+                        <span class="topic-num">07</span>
+                        <span class="topic-label">Quest System Backfire</span>
+                        <span class="topic-desc">Incentive design &amp; behavioral economics failure</span>
                     </div>
-                    <div class="legend-item">
-                        <div class="legend-icon rider"></div>
-                        <span>Riders</span>
+                    <div class="topic-card">
+                        <span class="topic-num">08</span>
+                        <span class="topic-label">Algorithmic Bias</span>
+                        <span class="topic-desc">Feedback loops, fairness constraints &amp; auditing</span>
                     </div>
-                    <div class="legend-item">
-                        <div class="legend-icon driver"></div>
-                        <span>Drivers</span>
+                </div>
+                <button class="btn-start" id="btnStart">
+                    Start Simulation
+                </button>
+                <div class="landing-footer">8 modules · Press → or click Next to navigate</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ STEP 1: LIVE MARKETPLACE MAP ═══════ -->
+    <section class="step" id="step1">
+        <div class="step-container">
+            <!-- Top bar -->
+            <div class="step-topbar">
+                <div class="step-progress">
+                    <div class="progress-dot active"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                </div>
+                <div class="step-indicator">Step 1 / 8</div>
+                <div class="step-clock" id="clock1">00:00:00</div>
+            </div>
+
+            <div class="step-layout two-col">
+                <!-- Left: Explanation -->
+                <div class="explain-panel">
+                    <div class="explain-badge">01 — Geospatial Indexing</div>
+                    <h2 class="explain-title">Live Marketplace Map</h2>
+                    <p class="explain-text">Ride-hailing platforms partition the service area into
+                        <strong>H3 hexagonal cells</strong> (Uber's open-source hierarchical spatial index). Each cell
+                        maintains a real-time count of active riders and available drivers. The hexagonal tessellation
+                        is preferred over square grids because it provides <strong>uniform adjacency</strong> — every
+                        cell
+                        has exactly 6 neighbors at equal distance, eliminating directional bias in demand aggregation.
+                    </p>
+
+                    <div class="explain-concept">
+                        <h4>Demand-Supply Ratio</h4>
+                        <p>Each cell is colored by the instantaneous ratio D/S. Red (ratio > 3.0) indicates acute
+                            undersupply — surge pricing activates. Blue (ratio < 1.5) indicates equilibrium or
+                                oversupply.</p>
+                    </div>
+                    <div class="explain-concept">
+                        <h4>Surge Multiplier per Cell</h4>
+                        <p>The number displayed on each hex is the local surge factor: S = 1.0 + α(D/S) + β(ΔD).
+                            This multiplier is passed directly to the fare calculation engine.</p>
+                    </div>
+                    <div class="explain-concept">
+                        <h4>Driver Heartbeats</h4>
+                        <p>Every 4 seconds, each active driver sends a GPS coordinate via a lightweight protocol.
+                            The pulsing dots represent these heartbeat pings — their position updates in real-time.</p>
+                    </div>
+                    <div class="explain-concept">
+                        <h4>Cell Inspection</h4>
+                        <p>Click any hexagon to view its internal state: available driver count, open ride requests,
+                            and the current local surge multiplier.</p>
+                    </div>
+
+                    <div class="explain-actions">
+                        <button class="btn-action" id="btnSpike1">Simulate Demand Spike</button>
+                        <button class="btn-action btn-secondary" id="btnWalk1">Walk to Adjacent Hex</button>
+                    </div>
+                </div>
+
+                <!-- Right: Map Canvas -->
+                <div class="visual-panel">
+                    <div class="visual-card">
+                        <div class="visual-header">
+                            <span class="live-badge"><span class="live-dot"></span> LIVE</span>
+                            <span class="visual-title">HITECH City — H3 Grid</span>
+                        </div>
+                        <div class="map-container">
+                            <canvas id="hexGrid"></canvas>
+                            <!-- Hex Zoom Popup -->
+                            <div class="hex-zoom-overlay" id="hexZoom" style="display:none;">
+                                <div class="hex-zoom-card">
+                                    <button class="hex-zoom-close" id="hexZoomClose">&times;</button>
+                                    <h3 id="zoomHexId">Hexagon —</h3>
+                                    <div class="zoom-stats">
+                                        <div class="zoom-stat">
+                                            <span class="zoom-stat-value" id="zoomDrivers">0</span>
+                                            <span class="zoom-stat-label">Available Drivers</span>
+                                        </div>
+                                        <div class="zoom-stat">
+                                            <span class="zoom-stat-value" id="zoomRequests">0</span>
+                                            <span class="zoom-stat-label">Open Requests</span>
+                                        </div>
+                                        <div class="zoom-stat surge">
+                                            <span class="zoom-stat-value" id="zoomSurge">1.0x</span>
+                                            <span class="zoom-stat-label">Surge Multiplier</span>
+                                        </div>
+                                    </div>
+                                    <div class="zoom-demand-bar">
+                                        <div class="zoom-demand-fill" id="zoomDemandFill"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="map-legend">
+                            <div class="legend-item"><span class="legend-swatch"
+                                    style="background:rgba(59,130,246,0.4)"></span>Low Demand</div>
+                            <div class="legend-item"><span class="legend-swatch"
+                                    style="background:rgba(245,158,11,0.4)"></span>Medium</div>
+                            <div class="legend-item"><span class="legend-swatch"
+                                    style="background:rgba(239,68,68,0.45)"></span>High Demand</div>
+                            <div class="legend-item"><span class="legend-swatch driver-dot"></span>Driver</div>
+                            <div class="legend-item"><span class="legend-swatch rider-dot"></span>Rider</div>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="control-panel">
-                <h2>User Console</h2>
-                
-                <div class="control-section">
-                    <h3>Your Location</h3>
-                    <div class="location-info">
-                        <div class="info-row">
-                            <span class="label">Hexagon:</span>
-                            <span id="currentHex">hex_0_0</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="label">Demand:</span>
-                            <span id="currentDemand">High</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="label">Surge:</span>
-                            <span id="currentSurge">1.9x</span>
-                        </div>
+
+            <div class="step-nav">
+                <button class="btn-nav btn-prev" id="prev1">← Back</button>
+                <button class="btn-nav btn-next" id="next1">Next: Algorithm Inspector →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ STEP 2: ALGORITHM INSPECTOR ═══════ -->
+    <section class="step" id="step2">
+        <div class="step-container">
+            <div class="step-topbar">
+                <div class="step-progress">
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot active"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                </div>
+                <div class="step-indicator">Step 2 / 8</div>
+                <div class="step-clock" id="clock2">00:00:00</div>
+            </div>
+
+            <div class="step-layout two-col">
+                <!-- Left: Explanation -->
+                <div class="explain-panel">
+                    <div class="explain-badge">02 — Dispatch &amp; Matching</div>
+                    <h2 class="explain-title">Algorithm Inspector</h2>
+                    <p class="explain-text">The matching engine solves a <strong>bipartite assignment problem</strong>:
+                        given a set of ride requests and available drivers, find the optimal pairing that minimizes
+                        a weighted cost function. The system does <strong>not</strong> simply assign the nearest
+                        driver — it evaluates a multi-factor acceptance probability for each candidate.</p>
+
+                    <div class="explain-concept">
+                        <h4>Dispatch Queue</h4>
+                        <p>Each incoming ride request enters a priority queue indexed by the rider's H3 cell.
+                            The dispatcher evaluates all drivers within a configurable radius (typically 3–5 km)
+                            and ranks them by a composite score.</p>
+                    </div>
+                    <div class="explain-concept">
+                        <h4>Acceptance Probability Score</h4>
+                        <p>Score = 0.30×(proximity) + 0.20×(quest progress) + 0.25×(driver rating) + 0.15×(acceptance
+                            history) + 0.10×(idle time). The weights are tuned via offline A/B testing to maximize
+                            acceptance rate while minimizing rider wait time.</p>
+                    </div>
+                    <div class="explain-concept formula-highlight">
+                        <h4>Dispatch Cost Function</h4>
+                        <p class="formula-display">C = w₁·d(r,d) + w₂·ETA(d) + w₃·(1/P<sub>accept</sub>)</p>
+                        <p class="formula-sub">d(r,d) = haversine distance · P<sub>accept</sub> = predicted acceptance
+                            probability</p>
+                    </div>
+                    <div class="explain-concept">
+                        <h4>Cascading Fallback</h4>
+                        <p>If the top-ranked driver rejects the request (timeout or manual decline), the system
+                            immediately pings the second-ranked candidate. This cascading pattern repeats up to
+                            3 times before the request is re-queued or cancelled — observe the rejection
+                            flow in the Assignment Link visualization.</p>
+                    </div>
+
+                    <div class="explain-actions">
+                        <button class="btn-action" id="btnNewMatch">Trigger New Match</button>
+                        <button class="btn-action btn-secondary" id="btnResetAssign">Reset Assignment</button>
                     </div>
                 </div>
-                
-                <div class="control-section">
-                    <h3>Your Price</h3>
-                    <div class="price-display">
-                        <span class="currency">₹</span><span id="currentPrice">367</span>
-                    </div>
-                    <div class="price-breakdown">
-                        <div class="breakdown-item">
-                            <span>Base fare + Distance + Time:</span>
-                            <span>₹<span id="baseCost">215</span></span>
+
+                <!-- Right: Algorithm Visuals -->
+                <div class="visual-panel">
+                    <div class="visual-card">
+                        <div class="visual-header">
+                            <span class="live-badge"><span class="live-dot"></span> LIVE</span>
+                            <span class="visual-title">Match Queue</span>
                         </div>
-                        <div class="breakdown-item">
-                            <span>Surge multiplier:</span>
-                            <span><span id="surgeMultiplier">1.9</span>x</span>
-                        </div>
-                        <div class="breakdown-item battery-penalty" id="batteryPenalty" style="display: none;">
-                            <span>Low battery penalty:</span>
-                            <span>+₹<span id="batteryAmount">0</span></span>
+                        <div class="match-queue" id="matchQueue"></div>
+                    </div>
+
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Live Probability Score</span></div>
+                        <div class="acceptance-card" id="acceptanceCard">
+                            <div class="acceptance-driver">
+                                <span class="driver-avatar">🚗</span>
+                                <span class="driver-name" id="acDriverName">Waiting...</span>
+                                <span class="driver-rating" id="acDriverRating">★ —</span>
+                            </div>
+                            <div class="score-formula" id="scoreFormula">
+                                <span class="formula-line">Score = (0.3 × <span id="fDist">—</span>) + (0.2 × <span
+                                        id="fQuest">—</span>) + (0.25 × <span id="fRating">—</span>) + (0.15 × <span
+                                        id="fAccept">—</span>) + (0.1 × <span id="fIdle">—</span>)</span>
+                            </div>
+                            <div class="score-result">
+                                <div class="score-bar-track">
+                                    <div class="score-bar-fill" id="scoreBarFill" style="width:0%"></div>
+                                </div>
+                                <span class="score-value" id="scoreValue">—%</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="control-section">
-                    <h3>Actions</h3>
-                    <button id="demandSpike" class="btn btn--primary">
-                        🔥 Simulate Demand Spike
-                    </button>
-                    <button id="walkButton" class="btn btn--outline">
-                        🚶 Walk 200m
-                    </button>
-                    <div class="toggle-container">
-                        <label class="toggle-label">
-                            <input type="checkbox" id="lowBattery" class="toggle-input">
-                            <span class="toggle-slider"></span>
-                            <span class="toggle-text">🔋 Simulate Low Battery (Experimental)</span>
-                        </label>
+
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Assignment Link (Rider → Driver)</span>
+                        </div>
+                        <canvas id="assignmentCanvas"></canvas>
+                        <div class="assignment-status" id="assignmentStatus">Click "Trigger New Match" to start</div>
                     </div>
-                </div>
-                
-                <div class="control-section">
-                    <h3>Instructions</h3>
-                    <ul class="instructions">
-                        <li>Drag the red marker on the grid to move your location</li>
-                        <li>Watch how prices change based on demand in different areas</li>
-                        <li>Click "Simulate Demand Spike" to see surge pricing in action</li>
-                        <li>Use "Walk 200m" to move to adjacent hexagons</li>
-                        <li>Toggle "Low Battery" to see personalized pricing</li>
-                    </ul>
+
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Cost Formula (Live)</span></div>
+                        <div class="formula-panel" id="costFormula">
+                            <div class="formula-row"><span class="formula-label">w₁ · Distance</span><span
+                                    class="formula-val" id="cfDist">—</span></div>
+                            <div class="formula-row"><span class="formula-label">w₂ · ETA</span><span
+                                    class="formula-val" id="cfEta">—</span></div>
+                            <div class="formula-row"><span class="formula-label">w₃ · Driver Prob</span><span
+                                    class="formula-val" id="cfProb">—</span></div>
+                            <div class="formula-row formula-total"><span class="formula-label">Total Cost</span><span
+                                    class="formula-val" id="cfTotal">—</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </main>
+
+            <div class="step-nav">
+                <button class="btn-nav btn-prev" id="prev2">← Back: Map</button>
+                <button class="btn-nav btn-next" id="next2">Next: Economics Dashboard →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ STEP 3: ECONOMICS DASHBOARD ═══════ -->
+    <section class="step" id="step3">
+        <div class="step-container">
+            <div class="step-topbar">
+                <div class="step-progress">
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot active"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                </div>
+                <div class="step-indicator">Step 3 / 8</div>
+                <div class="step-clock" id="clock3">00:00:00</div>
+            </div>
+
+            <div class="step-layout two-col">
+                <div class="explain-panel">
+                    <div class="explain-badge">03 — Dynamic Pricing &amp; Incentive Design</div>
+                    <h2 class="explain-title">Economics Engine</h2>
+                    <p class="explain-text">Ride-hailing platforms employ a
+                        <strong>real-time dynamic pricing model</strong> that adjusts fares based on instantaneous
+                        supply-demand imbalance. The mechanism serves two simultaneous economic functions:
+                        <strong>demand-side rationing</strong> (higher prices reduce marginal demand) and
+                        <strong>supply-side incentivization</strong> (higher payouts attract idle drivers to high-demand
+                        zones).
+                    </p>
+
+                    <div class="explain-concept formula-highlight">
+                        <h4>Surge Multiplier</h4>
+                        <p class="formula-display">S = 1.0 + α · (D/S) + β · ΔD</p>
+                        <p class="formula-sub">α = 0.30 (demand-ratio sensitivity) · β = 0.05 (rate-of-change dampener)
+                            · Capped at 3.0×</p>
+                    </div>
+                    <div class="explain-concept formula-highlight">
+                        <h4>Fare Calculation</h4>
+                        <p class="formula-display">Fare = (Base + d·R<sub>km</sub> + t·R<sub>min</sub> + Booking Fee) ×
+                            Surge</p>
+                        <p class="formula-sub">d = trip distance · t = estimated trip duration · R = per-unit rate</p>
+                    </div>
+                    <div class="explain-concept">
+                        <h4>Supply-Demand Equilibrium</h4>
+                        <p>The chart tracks aggregate rider requests (demand) vs available drivers (supply) across
+                            the grid. When the demand curve crosses above supply, the surge multiplier
+                            increases non-linearly. Note how the ΔD term amplifies rapid spikes — a suddenly filling
+                            stadium triggers surge before the absolute D/S ratio warrants it.</p>
+                    </div>
+                    <div class="explain-concept">
+                        <h4>Behavioral Incentive: Quest System</h4>
+                        <p>Uber uses a <strong>variable-ratio reinforcement schedule</strong> via "Quests" — complete
+                            N rides within a time window, earn a lump bonus. This exploits the same psychological
+                            mechanism as slot machines: the closer drivers get to the target, the less likely
+                            they are to stop driving, even at low per-ride earnings. The bonus creates a
+                            <strong>sunk-cost illusion</strong> that increases labor supply during peak hours.
+                        </p>
+                    </div>
+
+                    <div class="explain-actions">
+                        <button class="btn-action" id="btnAddRide">Complete a Ride (+1)</button>
+                        <button class="btn-action btn-secondary" id="btnToggleRain">Toggle Rain Conditions</button>
+                    </div>
+                </div>
+
+                <div class="visual-panel">
+                    <!-- Supply vs Demand Chart -->
+                    <div class="visual-card">
+                        <div class="visual-header">
+                            <span class="live-badge"><span class="live-dot"></span> LIVE</span>
+                            <span class="visual-title">Supply vs Demand (Grid-wide Aggregate)</span>
+                        </div>
+                        <canvas id="supplyDemandChart"></canvas>
+                        <div class="surge-alert" id="surgeAlert" style="display:none;">SURGE ACTIVE — D/S ratio exceeds
+                            threshold</div>
+                    </div>
+
+                    <!-- Surge Formula -->
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Surge Computation (Live)</span></div>
+                        <div class="surge-formula-panel">
+                            <div class="surge-formula-eq">S = 1.0 + 0.30 × (<span id="sfDemand">—</span> / <span
+                                    id="sfSupply">—</span>) + 0.05 × <span id="sfDelta">—</span></div>
+                            <div class="surge-breakdown">
+                                <div class="surge-row"><span>Base multiplier</span><span id="sbBase">1.00</span></div>
+                                <div class="surge-row"><span>+ α · (D / S) = 0.30 × <span
+                                            id="sbRatioCalc">—</span></span><span id="sbAlpha">—</span></div>
+                                <div class="surge-row"><span>+ β · ΔD = 0.05 × <span
+                                            id="sbDeltaCalc">—</span></span><span id="sbBeta">—</span></div>
+                                <div class="surge-row"><span>= Uncapped</span><span id="sbUncapped">—</span></div>
+                                <div class="surge-row surge-total"><span>Final (capped at 3.0×)</span><span
+                                        id="sbTotal">—</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fare Breakdown -->
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Fare Calculation — 5.2 km, 14 min
+                                trip</span></div>
+                        <div class="fare-panel">
+                            <div class="fare-row"><span>Base Fare</span><span id="fareBase">—</span></div>
+                            <div class="fare-row"><span>Distance: <span id="fareDist">—</span> km × ₹<span
+                                        id="fareDistRate">—</span>/km</span><span id="fareDistTotal">—</span></div>
+                            <div class="fare-row"><span>Time: <span id="fareTime">—</span> min × ₹<span
+                                        id="fareTimeRate">—</span>/min</span><span id="fareTimeTotal">—</span></div>
+                            <div class="fare-row"><span>Booking Fee</span><span id="fareBooking">—</span></div>
+                            <div class="fare-row"><span>Subtotal (before surge)</span><span id="fareSubtotal">—</span>
+                            </div>
+                            <div class="fare-row"><span>× Surge Multiplier</span><span id="fareSurge">—</span></div>
+                            <div class="fare-row" id="fareRainRow" style="display:none;"><span>× Rain
+                                    Adjustment</span><span id="fareRainMult">—</span></div>
+                            <div class="fare-row fare-total"><span>Final Fare</span><span id="fareFinal">—</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Quest Progress -->
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Quest Incentive (Driver View)</span></div>
+                        <div class="quest-panel">
+                            <div class="quest-info"><span id="questCount">0</span> / 12 rides completed</div>
+                            <div class="quest-bar">
+                                <div class="quest-bar-fill" id="questBarFill" style="width:0%"></div>
+                            </div>
+                            <div class="quest-reward">Target bonus: <strong>₹600</strong> · Effective per-ride premium:
+                                <strong>₹<span id="questPerRide">50</span></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quest Bonus Popup -->
+            <div class="quest-bonus-popup" id="questBonus" style="display:none;">
+                <div class="bonus-content">
+                    <span class="bonus-emoji">+</span>
+                    <span class="bonus-amount">₹600</span>
+                    <span class="bonus-text">Quest Complete — 12 / 12 rides</span>
+                </div>
+            </div>
+
+            <div class="step-nav">
+                <button class="btn-nav btn-prev" id="prev3">← Back: Algorithm</button>
+                <button class="btn-nav btn-next" id="next3">Next: ETA Predictor →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ STEP 4: ETA ML PREDICTOR ═══════ -->
+    <section class="step" id="step4">
+        <div class="step-container">
+            <div class="step-topbar">
+                <div class="step-progress">
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot active"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                </div>
+                <div class="step-indicator">Step 4 / 8</div>
+                <div class="step-clock" id="clock4">00:00:00</div>
+            </div>
+
+            <div class="step-layout two-col">
+                <div class="explain-panel">
+                    <div class="explain-badge">04 — Supervised Learning</div>
+                    <h2 class="explain-title">ETA ML Predictor</h2>
+                    <p class="explain-text">Uber's ETA model is a <strong>gradient-boosted decision tree</strong>
+                        (DeepETA) trained on billions of historical trips. Rather than producing a single point
+                        estimate, the model outputs a <strong>prediction distribution</strong> — an optimistic bound,
+                        a pessimistic bound, and a confidence score that quantifies the model's uncertainty given
+                        current road conditions.</p>
+
+                    <div class="explain-concept">
+                        <h4>Feature Attribution</h4>
+                        <p>The bar chart shows the relative contribution of each input feature to the current
+                            prediction (analogous to SHAP values). Traffic congestion and junction density typically
+                            dominate, but weather and route complexity can shift the distribution significantly.</p>
+                    </div>
+                    <div class="explain-concept">
+                        <h4>Prediction Interval</h4>
+                        <p>Instead of a point estimate ("ETA: 4 min"), the model provides a range:
+                            [optimistic, pessimistic]. The thumb marker shows the expected value. The width
+                            of the interval reflects the model's uncertainty — wider intervals indicate less
+                            predictable conditions (e.g., rain, high traffic variance).</p>
+                    </div>
+                    <div class="explain-concept">
+                        <h4>Confidence Score</h4>
+                        <p>A scalar in [0, 100] derived from the variance of the prediction distribution.
+                            High confidence (>85%) means the model has seen many similar trips with consistent
+                            outcomes. Low confidence (<70%) signals novel or volatile conditions where the prediction
+                                should be treated as approximate.</p>
+                    </div>
+
+                    <div class="explain-actions">
+                        <button class="btn-action" id="btnRecalcEta">Recalculate ETA</button>
+                        <button class="btn-action btn-secondary" id="btnToggleTraffic">Toggle Heavy Traffic</button>
+                    </div>
+                </div>
+
+                <div class="visual-panel">
+                    <div class="visual-card">
+                        <div class="visual-header">
+                            <span class="live-badge"><span class="live-dot"></span> LIVE</span>
+                            <span class="visual-title">Feature Weights</span>
+                        </div>
+                        <div class="feature-bars" id="featureBars">
+                            <div class="feature-bar-row">
+                                <span class="feature-label">Traffic Congestion</span>
+                                <div class="feature-bar-track">
+                                    <div class="feature-bar-fill traffic" id="fwTraffic" style="width:0%"></div>
+                                </div>
+                                <span class="feature-pct" id="fwTrafficPct">—</span>
+                            </div>
+                            <div class="feature-bar-row">
+                                <span class="feature-label">Junction Delay</span>
+                                <div class="feature-bar-track">
+                                    <div class="feature-bar-fill junction" id="fwJunction" style="width:0%"></div>
+                                </div>
+                                <span class="feature-pct" id="fwJunctionPct">—</span>
+                            </div>
+                            <div class="feature-bar-row">
+                                <span class="feature-label">Driver Speed</span>
+                                <div class="feature-bar-track">
+                                    <div class="feature-bar-fill speed" id="fwSpeed" style="width:0%"></div>
+                                </div>
+                                <span class="feature-pct" id="fwSpeedPct">—</span>
+                            </div>
+                            <div class="feature-bar-row">
+                                <span class="feature-label">Weather Impact</span>
+                                <div class="feature-bar-track">
+                                    <div class="feature-bar-fill weather" id="fwWeather" style="width:0%"></div>
+                                </div>
+                                <span class="feature-pct" id="fwWeatherPct">—</span>
+                            </div>
+                            <div class="feature-bar-row">
+                                <span class="feature-label">Route Complexity</span>
+                                <div class="feature-bar-track">
+                                    <div class="feature-bar-fill route" id="fwRoute" style="width:0%"></div>
+                                </div>
+                                <span class="feature-pct" id="fwRoutePct">—</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Prediction Range</span></div>
+                        <div class="prediction-display">
+                            <div class="pred-eta-big" id="predEta">—:—</div>
+                            <div class="pred-eta-label">Expected ETA</div>
+                        </div>
+                        <div class="prediction-range">
+                            <div class="range-labels">
+                                <span class="range-optimistic" id="predOptimistic">— min</span>
+                                <span class="range-pessimistic" id="predPessimistic">— min</span>
+                            </div>
+                            <div class="range-track">
+                                <div class="range-fill" id="rangeFill"></div>
+                                <div class="range-thumb" id="rangeThumb" style="left:50%"></div>
+                            </div>
+                            <div class="range-endpoints">
+                                <span>Optimistic</span>
+                                <span>Pessimistic</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Model Confidence</span></div>
+                        <div class="confidence-display">
+                            <div class="confidence-ring">
+                                <svg viewBox="0 0 120 120">
+                                    <circle class="conf-bg" cx="60" cy="60" r="52"></circle>
+                                    <circle class="conf-fill" id="confFill" cx="60" cy="60" r="52"></circle>
+                                </svg>
+                                <span class="conf-value" id="confValue">—%</span>
+                            </div>
+                            <div class="conf-label">Prediction Confidence</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-nav">
+                <button class="btn-nav btn-prev" id="prev4">← Back: Economics</button>
+                <button class="btn-nav btn-next" id="next4">Next: Case Studies →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ STEP 5: CASE STUDY — RAIN SURGE CRISIS ═══════ -->
+    <section class="step" id="step5">
+        <div class="step-container">
+            <div class="step-topbar">
+                <div class="step-progress">
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot active"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                </div>
+                <div class="step-indicator">Case 1 / 4</div>
+                <div class="step-clock" id="clock5">00:00:00</div>
+            </div>
+
+            <div class="step-layout two-col">
+                <div class="explain-panel">
+                    <div class="explain-badge">05 — Pricing Ethics</div>
+                    <h2 class="explain-title">Bangalore Rain Surge Crisis</h2>
+                    <p class="explain-text"><strong>July 2023, Bangalore.</strong> Heavy rain at 6:30 PM triggers
+                        a supply shock: 30% of drivers go offline (450 → 320) while rider requests spike 83%
+                        (600 → 1,100). The surge multiplier jumps from 1.3× to 2.8× — a 5 km ride goes from
+                        ₹75 to ₹210.</p>
+
+                    <div class="explain-concept">
+                        <h4>The Platform's Position</h4>
+                        <p>"Surge pricing is the only mechanism that creates supply. Without it, nobody gets rides.
+                            Higher prices incentivize off-duty drivers to come online and accept rain-risk trips."</p>
+                    </div>
+                    <div class="explain-concept">
+                        <h4>The User's Position</h4>
+                        <p>"This is exploitation during a weather emergency. People need to get home safely —
+                            charging 2.8× during a crisis is predatory pricing."</p>
+                    </div>
+                    <div class="explain-concept">
+                        <h4>The Driver's Position</h4>
+                        <p>"2.8× barely covers the risk. Rain driving means hydroplaning, poor visibility,
+                            and vehicle damage. My effective earnings after vehicle wear are marginal."</p>
+                    </div>
+                    <div class="explain-concept formula-highlight">
+                        <h4>Discussion Task</h4>
+                        <p>Design a surge algorithm that balances fairness and efficiency during weather emergencies.
+                            Consider: hard caps, dynamic credits, insurance pools, or tiered pricing.</p>
+                    </div>
+                </div>
+
+                <div class="visual-panel">
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Supply Shock — Before vs During
+                                Rain</span></div>
+                        <div class="case-metrics">
+                            <div class="case-metric-row">
+                                <span class="case-label">Active Drivers</span>
+                                <span class="case-before">450</span>
+                                <span class="case-arrow">→</span>
+                                <span class="case-after negative">320 (−29%)</span>
+                            </div>
+                            <div class="case-metric-row">
+                                <span class="case-label">Ride Requests</span>
+                                <span class="case-before">600</span>
+                                <span class="case-arrow">→</span>
+                                <span class="case-after negative">1,100 (+83%)</span>
+                            </div>
+                            <div class="case-metric-row">
+                                <span class="case-label">Surge Multiplier</span>
+                                <span class="case-before">1.3×</span>
+                                <span class="case-arrow">→</span>
+                                <span class="case-after negative">2.8×</span>
+                            </div>
+                            <div class="case-metric-row">
+                                <span class="case-label">Fare (5 km)</span>
+                                <span class="case-before">₹75</span>
+                                <span class="case-arrow">→</span>
+                                <span class="case-after negative">₹210</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Options Analysis</span></div>
+                        <div class="case-options">
+                            <div class="case-option">
+                                <div class="case-option-header">
+                                    <span class="case-option-label">A. No Cap (2.8×)</span>
+                                </div>
+                                <div class="case-option-stats">
+                                    <span>Fulfillment: <strong>65%</strong></span>
+                                    <span>Revenue: <strong>₹2.31L</strong></span>
+                                </div>
+                            </div>
+                            <div class="case-option">
+                                <div class="case-option-header">
+                                    <span class="case-option-label">B. Hard Cap at 1.5×</span>
+                                </div>
+                                <div class="case-option-stats">
+                                    <span>Fulfillment: <strong>42%</strong></span>
+                                    <span>Revenue: <strong>₹1.23L</strong></span>
+                                </div>
+                            </div>
+                            <div class="case-option chosen">
+                                <div class="case-option-header">
+                                    <span class="case-option-label">C. 2.5× + Rider Credits</span>
+                                    <span class="case-option-tag">CHOSEN</span>
+                                </div>
+                                <div class="case-option-stats">
+                                    <span>Fulfillment: <strong>58%</strong></span>
+                                    <span>Revenue: <strong>₹1.95L</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Outcome</span></div>
+                        <div class="case-outcome">
+                            <p>Rapido chose <strong>Option C</strong> (2.5× cap + ₹50 credit per affected ride)
+                                and created <strong>bad weather bonus pools</strong> — a dedicated fund paying drivers
+                                an additional ₹30/ride during rain events, funded from platform commission.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-nav">
+                <button class="btn-nav btn-prev" id="prev5">← Back: ETA Predictor</button>
+                <button class="btn-nav btn-next" id="next5">Next: Tier-2 Launch →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ STEP 6: CASE STUDY — TIER-2 LAUNCH FAILURE ═══════ -->
+    <section class="step" id="step6">
+        <div class="step-container">
+            <div class="step-topbar">
+                <div class="step-progress">
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot active"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                </div>
+                <div class="step-indicator">Case 2 / 4</div>
+                <div class="step-clock" id="clock6">00:00:00</div>
+            </div>
+
+            <div class="step-layout two-col">
+                <div class="explain-panel">
+                    <div class="explain-badge">06 — Cold-Start Problem</div>
+                    <h2 class="explain-title">Tier-2 City Launch Failure</h2>
+                    <p class="explain-text"><strong>Challenge:</strong> Launch Rapido in Nashik (population 1.5M)
+                        from zero network density. The <strong>chicken-and-egg problem</strong>: riders won't join
+                        without drivers, drivers won't join without guaranteed rides.</p>
+
+                    <div class="explain-concept">
+                        <h4>Week 1–4: Broad Launch (Failed)</h4>
+                        <p>Hired 200 drivers across the city, only 87 onboarded. Promised 500 rides/day,
+                            achieved 230. Wait times exceeded 12 minutes. Driver churn hit 48% — nearly half
+                            quit within the first month.</p>
+                    </div>
+                    <div class="explain-concept">
+                        <h4>Week 5: Crisis Point</h4>
+                        <p>Only 45 drivers active. Burn rate: ₹4.5L/week. Management ultimatum: "Break even
+                            in 3 weeks or shut down the market."</p>
+                    </div>
+                    <div class="explain-concept">
+                        <h4>Week 6–8: The Corridor Pivot</h4>
+                        <p>Instead of city-wide coverage, concentrated all 30 remaining drivers on a
+                            <strong>single 8 km corridor</strong> (Railway Station → College Road). Partnered with
+                            colleges for guaranteed demand. Result: 65 active drivers, ₹420/day earnings,
+                            5-minute wait times.
+                        </p>
+                    </div>
+                    <div class="explain-concept formula-highlight">
+                        <h4>Discussion Task</h4>
+                        <p>Design a launch strategy for Bhopal with a ₹50L budget over 6 months.
+                            Define: target corridors, driver acquisition cost, demand partnerships, and
+                            expansion triggers.</p>
+                    </div>
+                </div>
+
+                <div class="visual-panel">
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Broad Launch Metrics (Week 1–4)</span>
+                        </div>
+                        <div class="case-metrics">
+                            <div class="case-metric-row">
+                                <span class="case-label">Target Drivers</span>
+                                <span class="case-before">200</span>
+                                <span class="case-arrow">→</span>
+                                <span class="case-after negative">87 onboarded</span>
+                            </div>
+                            <div class="case-metric-row">
+                                <span class="case-label">Daily Rides</span>
+                                <span class="case-before">500 target</span>
+                                <span class="case-arrow">→</span>
+                                <span class="case-after negative">230 actual</span>
+                            </div>
+                            <div class="case-metric-row">
+                                <span class="case-label">Wait Time</span>
+                                <span class="case-before">5 min goal</span>
+                                <span class="case-arrow">→</span>
+                                <span class="case-after negative">12+ min</span>
+                            </div>
+                            <div class="case-metric-row">
+                                <span class="case-label">Driver Churn</span>
+                                <span class="case-before">—</span>
+                                <span class="case-arrow">→</span>
+                                <span class="case-after negative">48%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Corridor Pivot Metrics (Week 6–8)</span>
+                        </div>
+                        <div class="case-metrics">
+                            <div class="case-metric-row">
+                                <span class="case-label">Focus Zone</span>
+                                <span class="case-after positive" style="margin-left:auto">Station → College (8
+                                    km)</span>
+                            </div>
+                            <div class="case-metric-row">
+                                <span class="case-label">Active Drivers</span>
+                                <span class="case-before">45 (crisis)</span>
+                                <span class="case-arrow">→</span>
+                                <span class="case-after positive">65</span>
+                            </div>
+                            <div class="case-metric-row">
+                                <span class="case-label">Driver Earnings</span>
+                                <span class="case-before">₹180/day</span>
+                                <span class="case-arrow">→</span>
+                                <span class="case-after positive">₹420/day</span>
+                            </div>
+                            <div class="case-metric-row">
+                                <span class="case-label">Wait Time</span>
+                                <span class="case-before">12+ min</span>
+                                <span class="case-arrow">→</span>
+                                <span class="case-after positive">5 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Key Takeaways</span></div>
+                        <div class="case-outcome">
+                            <p><strong>1. Liquidity > Coverage</strong> — a small zone with reliable matches
+                                outperforms a large zone with sparse coverage.</p>
+                            <p><strong>2. Guaranteed Matches First</strong> — partner for base demand before
+                                scaling organically.</p>
+                            <p><strong>3. Expand on Triggers</strong> — only add zones when the current corridor
+                                hits >80% utilization.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-nav">
+                <button class="btn-nav btn-prev" id="prev6">← Back: Rain Surge</button>
+                <button class="btn-nav btn-next" id="next6">Next: Quest Backfire →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ STEP 7: CASE STUDY — QUEST SYSTEM BACKFIRE ═══════ -->
+    <section class="step" id="step7">
+        <div class="step-container">
+            <div class="step-topbar">
+                <div class="step-progress">
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot active"></div>
+                    <div class="progress-line"></div>
+                    <div class="progress-dot"></div>
+                </div>
+                <div class="step-indicator">Case 3 / 4</div>
+                <div class="step-clock" id="clock7">00:00:00</div>
+            </div>
+
+            <div class="step-layout two-col">
+                <div class="explain-panel">
+                    <div class="explain-badge">07 — Incentive Design Failure</div>
+                    <h2 class="explain-title">Quest System Backfire</h2>
+                    <p class="explain-text"><strong>August 2023, Hyderabad.</strong> The platform launches a quest:
+                        "Complete 15 rides in 5 hours (6–11 PM) → ₹800 bonus." The all-or-nothing cliff structure
+                        triggers a behavioral economics disaster.</p>
+
+                    <div class="explain-concept">
+                        <h4>Day 1–3: Oversubscription</h4>
+                        <p>65% driver participation — far higher than expected. The bonus was too attractive
+                            relative to base earnings, creating unsustainable economics.</p>
+                    </div>
+                    <div class="explain-concept">
+                        <h4>Day 4–7: Structural Failure</h4>
+                        <p>Only 18% of participants actually completed 15 rides. The target was
+                            mathematically near-impossible for average drivers (3 rides/hour sustained for 5 hours).
+                            Drivers at 13–14 rides felt <strong>rage</strong> at narrowly missing.</p>
+                    </div>
+                    <div class="explain-concept">
+                        <h4>Day 8–14: Strike</h4>
+                        <p>300 drivers coordinated a mass logout. Root cause: the <strong>sunk cost fallacy</strong>
+                            drove risky behavior — 3 accidents reported from drivers rushing to hit 15.
+                            The all-or-nothing design (14 rides = ₹0, 15 rides = ₹800) created
+                            a dangerous psychological cliff.</p>
+                    </div>
+                    <div class="explain-concept formula-highlight">
+                        <h4>Discussion Task</h4>
+                        <p>Design a progressive quest system. Define: milestone tiers, reward curve shape
+                            (linear vs concave), and safeguards against risky driving behavior.</p>
+                    </div>
+                </div>
+
+                <div class="visual-panel">
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Original Quest (All-or-Nothing)</span>
+                        </div>
+                        <div class="case-metrics">
+                            <div class="case-metric-row">
+                                <span class="case-label">Target</span>
+                                <span class="case-after" style="margin-left:auto">15 rides in 5 hours</span>
+                            </div>
+                            <div class="case-metric-row">
+                                <span class="case-label">Reward</span>
+                                <span class="case-after" style="margin-left:auto">₹800 (all-or-nothing)</span>
+                            </div>
+                            <div class="case-metric-row">
+                                <span class="case-label">Participation</span>
+                                <span class="case-after" style="margin-left:auto">65% of drivers</span>
+                            </div>
+                            <div class="case-metric-row">
+                                <span class="case-label">Completion</span>
+                                <span class="case-after negative" style="margin-left:auto">18%</span>
+                            </div>
+                            <div class="case-metric-row">
+                                <span class="case-label">Incidents</span>
+                                <span class="case-after negative" style="margin-left:auto">3 accidents, 300-driver
+                                    strike</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Progressive Reward Fix</span></div>
+                        <div class="case-quest-tiers">
+                            <div class="case-quest-tier">
+                                <div class="tier-bar" style="width:53%"></div>
+                                <span class="tier-label">8 rides</span>
+                                <span class="tier-reward">₹200</span>
+                            </div>
+                            <div class="case-quest-tier">
+                                <div class="tier-bar" style="width:67%"></div>
+                                <span class="tier-label">10 rides</span>
+                                <span class="tier-reward">₹400</span>
+                            </div>
+                            <div class="case-quest-tier">
+                                <div class="tier-bar" style="width:80%"></div>
+                                <span class="tier-label">12 rides</span>
+                                <span class="tier-reward">₹650</span>
+                            </div>
+                            <div class="case-quest-tier">
+                                <div class="tier-bar" style="width:100%"></div>
+                                <span class="tier-label">15 rides</span>
+                                <span class="tier-reward">₹1,000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Key Takeaways</span></div>
+                        <div class="case-outcome">
+                            <p><strong>1. Reward Effort, Not Just Completion</strong> — partial credit prevents
+                                rage-quitting and dangerous behavior.</p>
+                            <p><strong>2. Concave Reward Curves</strong> — diminishing marginal returns per
+                                additional ride prevent gaming and encourage sustainable driving.</p>
+                            <p><strong>3. Test Small, Scale Slow</strong> — run quests in one zone for one week
+                                before city-wide rollout.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-nav">
+                <button class="btn-nav btn-prev" id="prev7">← Back: Tier-2 Launch</button>
+                <button class="btn-nav btn-next" id="next7">Next: Algorithmic Bias →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ STEP 8: CASE STUDY — ALGORITHMIC BIAS ═══════ -->
+    <section class="step" id="step8">
+        <div class="step-container">
+            <div class="step-topbar">
+                <div class="step-progress">
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot done"></div>
+                    <div class="progress-line done"></div>
+                    <div class="progress-dot active"></div>
+                </div>
+                <div class="step-indicator">Case 4 / 4</div>
+                <div class="step-clock" id="clock8">00:00:00</div>
+            </div>
+
+            <div class="step-layout two-col">
+                <div class="explain-panel">
+                    <div class="explain-badge">08 — Fairness &amp; Accountability</div>
+                    <h2 class="explain-title">Algorithmic Bias</h2>
+                    <p class="explain-text"><strong>2020 research study.</strong> Areas with >70% minority population
+                        experienced <strong>25% longer wait times</strong> and <strong>2× cancellation rates</strong>.
+                        The algorithm had learned to systematically deprioritize underserved neighborhoods through a
+                        self-reinforcing feedback loop.</p>
+
+                    <div class="explain-concept">
+                        <h4>The Feedback Loop</h4>
+                        <p>Low historical acceptance in Area X → algorithm learns "Area X = low probability" →
+                            pings fewer drivers for Area X → longer waits → more cancellations → data confirms
+                            "Area X = bad" → loop reinforces. A <strong>compounding bias amplifier</strong>
+                            masquerading as "data-driven optimization."</p>
+                    </div>
+                    <div class="explain-concept formula-highlight">
+                        <h4>Root Cause</h4>
+                        <p class="formula-display" style="font-size:0.78rem">P<sub>accept</sub> = 0.5 ×
+                            historical_rate(area)</p>
+                        <p class="formula-sub">This single line turns historical inequality into future policy.
+                            The model treats past discrimination as ground truth.</p>
+                    </div>
+                    <div class="explain-concept">
+                        <h4>Solutions Tested</h4>
+                        <p>Four approaches were evaluated — blind matching, fairness constraints,
+                            incentive bonuses, and public auditing — each with different tradeoffs between
+                            efficiency, cost, and equity.</p>
+                    </div>
+                    <div class="explain-concept formula-highlight">
+                        <h4>Discussion Task</h4>
+                        <p>Design a fair matching algorithm that guarantees minimum service levels across all
+                            neighborhoods without sacrificing more than 5% overall efficiency.
+                            Consider: fairness constraints, explainability requirements, and audit mechanisms.</p>
+                    </div>
+                </div>
+
+                <div class="visual-panel">
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Disparity Metrics</span></div>
+                        <div class="case-metrics">
+                            <div class="case-metric-row">
+                                <span class="case-label">Wait Time Gap</span>
+                                <span class="case-after negative" style="margin-left:auto">25% longer in affected
+                                    areas</span>
+                            </div>
+                            <div class="case-metric-row">
+                                <span class="case-label">Cancellation Rate</span>
+                                <span class="case-after negative" style="margin-left:auto">2× higher</span>
+                            </div>
+                            <div class="case-metric-row">
+                                <span class="case-label">Affected Population</span>
+                                <span class="case-after" style="margin-left:auto">Areas with >70% minority
+                                    residents</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Solutions Comparison</span></div>
+                        <div class="case-options">
+                            <div class="case-option">
+                                <div class="case-option-header">
+                                    <span class="case-option-label">A. Blind Matching</span>
+                                </div>
+                                <div class="case-option-stats">
+                                    <span>Remove location data</span>
+                                    <span class="negative">−12% driver satisfaction</span>
+                                </div>
+                            </div>
+                            <div class="case-option chosen">
+                                <div class="case-option-header">
+                                    <span class="case-option-label">B. Fairness Constraints</span>
+                                    <span class="case-option-tag">ADOPTED</span>
+                                </div>
+                                <div class="case-option-stats">
+                                    <span>Guarantee minimum coverage</span>
+                                    <span class="negative">−5% efficiency</span>
+                                </div>
+                            </div>
+                            <div class="case-option chosen">
+                                <div class="case-option-header">
+                                    <span class="case-option-label">C. Incentive Bonuses</span>
+                                    <span class="case-option-tag">ADOPTED</span>
+                                </div>
+                                <div class="case-option-stats">
+                                    <span>Pay premium for underserved</span>
+                                    <span class="negative">₹80L/month cost</span>
+                                </div>
+                            </div>
+                            <div class="case-option chosen">
+                                <div class="case-option-header">
+                                    <span class="case-option-label">D. Public Dashboard + Audit</span>
+                                    <span class="case-option-tag">ADOPTED</span>
+                                </div>
+                                <div class="case-option-stats">
+                                    <span>Transparency reporting</span>
+                                    <span class="positive">+25% public trust</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="visual-card">
+                        <div class="visual-header"><span class="visual-title">Outcome</span></div>
+                        <div class="case-outcome">
+                            <p>Uber implemented <strong>B + C + D</strong> — fairness constraints guarantee minimum
+                                service levels, incentive bonuses attract drivers to underserved zones, and a public
+                                dashboard provides ongoing accountability. Option A (blind matching) was rejected as
+                                it degraded the driver experience without addressing the root cause.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-nav">
+                <button class="btn-nav btn-prev" id="prev8">← Back: Quest Backfire</button>
+                <button class="btn-nav btn-next btn-finish" id="next8">Finish — Back to Start</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global brand watermark -->
+    <div class="brand-watermark">
+        <svg viewBox="0 0 40 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="20,0 40,36 0,36" fill="#0A84FF" />
+        </svg>
+        <span>Project-V</span>
     </div>
-    
+
     <script src="app.js"></script>
 </body>
+
 </html>
